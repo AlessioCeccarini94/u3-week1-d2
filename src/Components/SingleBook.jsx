@@ -10,13 +10,17 @@ class SingleBook extends Component {
       selected: false,
     }
     return (
-      <Col>
-        <Card className="h-100 this.state.selected === true ? 'border border-danger' : ''}">
+      <Col className="mb-3 mt-3">
+        <Card
+          className="h-100 border border-2 {this.state.selected === true ? 'border-danger' : ' '}"
+          onClick={() => this.setState({ selected: true })}
+          style={{ cursor: "pointer" }}
+        >
           <Card.Img variant="top" src={this.props.img} />
-          <Card.Body>
+          <Card.Body className="d-flex flex-column justify-content-between">
             <Card.Title>{this.props.title}</Card.Title>
             <Card.Title>{this.props.price}</Card.Title>
-            <Button className="my-auto bg-dark" variant="primary">
+            <Button className=" bg-dark" variant="primary">
               Buy Now
             </Button>
           </Card.Body>
