@@ -1,9 +1,9 @@
 import { Container, Row, Col, Card, Button } from "react-bootstrap"
 import books from "../Data/history.json"
-import "../App.css"
+import "../index.css"
 import { Component } from "react"
 
-class MainPage extends Component {
+class AllTheBooks extends Component {
   state = {
     activeBook: books[0],
   }
@@ -16,21 +16,26 @@ class MainPage extends Component {
         >
           WELCOME
         </h1>
-        <Container className="my-5 bg-dark">
+        <Container className="my-5">
           <Row className=" row-cols-2 row-cols-md-3 row-cols-lg-4 align-items-center">
             {books.map((book) => (
               <Col className="my-3 align-items-center">
-                <Card className="h-100 d-flex flex-column bg-dark-subtle">
+                <Card
+                  id="card"
+                  key={book.asin}
+                  className="h-100 d-flex flex-column bg-dark-subtle"
+                >
                   <Card.Img
                     variant="top"
-                    className="h-100 img-fluid"
+                    className="img-fluid"
                     src={book.img}
+                    style={{ objectFit: "cover" }}
                   />
-                  <Card.Body className="d-flex flex-column">
+                  <Card.Body className="d-flex flex-column justify-content-between h-100">
                     <Card.Title className="my-auto">{book.title}</Card.Title>
                     <Card.Text className="my-auto">{book.price}</Card.Text>
                     <Card.Text className="my-auto">{book.category}</Card.Text>
-                    <Button className="mt-auto bg-dark" variant="primary">
+                    <Button className="my-auto bg-dark" variant="primary">
                       Buy Now
                     </Button>
                   </Card.Body>
@@ -43,4 +48,4 @@ class MainPage extends Component {
     )
   }
 }
-export default MainPage
+export default AllTheBooks
