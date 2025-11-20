@@ -5,16 +5,17 @@ class AddComment extends Component {
   state = {
     comment: {
       comment: "",
-      rate: 1,
+      rate: "1",
       elementId: this.props.asin,
     },
   }
   SendComment = (e) => {
     e.preventDefault()
-    const URL = "https://striveschool-api.herokuapp.com/api/comments/"
+    console.log(this.state.comment)
+
     const TOKEN =
       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTFmMTI3NjIzZTc0MDAwMTVmN2ZkYzkiLCJpYXQiOjE3NjM2NDQwMjIsImV4cCI6MTc2NDg1MzYyMn0.X1G8ThgJJIBaS2lJwkbUtQCEyx2KKJ-chGO7mA6BnzY"
-    fetch(URL, {
+    fetch("https://striveschool-api.herokuapp.com/api/comments/", {
       method: "POST",
       body: JSON.stringify(this.state.comment),
       headers: {
@@ -26,7 +27,7 @@ class AddComment extends Component {
         if (res.ok) {
           return res.json()
         } else {
-          throw new Error()
+          throw new Error(res.status)
         }
       })
       .then(() => {
@@ -39,7 +40,7 @@ class AddComment extends Component {
         })
       })
       .catch((err) => {
-        console.log(err)
+        console.log(err + "errore nell'invio del commento")
       })
   }
   render() {
@@ -61,7 +62,7 @@ class AddComment extends Component {
               value={this.state.comment.rate}
               onChange={(e) =>
                 this.setState({
-                  rate: { ...this.state.comment, comment: e.target.value },
+                  comment: { ...this.state.comment, rate: e.target.value },
                 })
               }
             >
