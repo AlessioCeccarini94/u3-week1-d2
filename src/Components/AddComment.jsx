@@ -43,38 +43,55 @@ class AddComment extends Component {
         console.log(err + "errore nell'invio del commento")
       })
   }
+  componentDidUpdate(prevProps) {
+    if (prevProps.asin !== this.props.asin) {
+      this.setState({
+        comment: {
+          comment: "",
+          rate: "",
+          elementId: this.props.asin,
+        },
+      })
+    }
+  }
+
   render() {
     return (
       <>
-        <Form onSubmit={this.SendComment}>
-          <Form.Group className="mb-3">
-            <Form.Control
-              value={this.state.comment.comment}
-              onChange={(e) =>
-                this.setState({
-                  comment: { ...this.state.comment, comment: e.target.value },
-                })
-              }
-            />
-          </Form.Group>
-          <Form.Group className="mb-3">
-            <Form.Select
-              value={this.state.comment.rate}
-              onChange={(e) =>
-                this.setState({
-                  comment: { ...this.state.comment, rate: e.target.value },
-                })
-              }
-            >
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-            </Form.Select>
-          </Form.Group>
-          <Button type="submit">Invia un commento</Button>
-        </Form>
+        <div className="d-flex flex-column align-items-center">
+          <Form
+            onSubmit={this.SendComment}
+            className="d-flex flex-column align-items-center"
+          >
+            <Form.Group className="mb-3">
+              <Form.Control
+                value={this.state.comment.comment}
+                onChange={(e) =>
+                  this.setState({
+                    comment: { ...this.state.comment, comment: e.target.value },
+                  })
+                }
+              />
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Select
+                value={this.state.comment.rate}
+                onChange={(e) =>
+                  this.setState({
+                    comment: { ...this.state.comment, rate: e.target.value },
+                  })
+                }
+              >
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </Form.Select>
+            </Form.Group>
+            <Button type="submit">Invia un commento</Button>
+          </Form>
+        </div>
       </>
     )
   }

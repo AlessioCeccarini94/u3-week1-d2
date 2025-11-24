@@ -30,16 +30,18 @@ class CommentArea extends Component {
         console.log(err)
       })
   }
-  componentDidMount() {
-    console.log(this.props.asin)
-
-    this.getComments()
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.asin !== this.props.asin) {
+      this.getComments()
+    }
   }
   render() {
     return (
       <>
-        <CommentList comments={this.state.comments} />
-        <AddComment asin={this.props.asin} />
+        <div className="d-flex flex-column align-items-center my-3">
+          <CommentList comments={this.state.comments} />
+          <AddComment asin={this.props.asin} />
+        </div>
       </>
     )
   }
