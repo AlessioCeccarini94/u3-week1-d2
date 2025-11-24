@@ -25,21 +25,19 @@ class BookList extends Component {
       <>
         <Form inline>
           <Row className="align-items-center justify-content-center my-3">
-            <Col>
+            <Col className="d-flex justify-content-center">
               <Form.Control
                 type="search"
                 placeholder="Search"
                 value={this.state.search}
                 onChange={(e) => this.setState({ search: e.target.value })}
-                className=" mr-sm-2"
+                className=" me-sm-2 w-50"
               />
-            </Col>
-            <Col xs="auto">
               <Button type="submit">Submit</Button>
             </Col>
           </Row>
         </Form>
-        <Container>
+        <Container className="ms-auto w-100">
           <Row className="w-100">
             <Col className="col-9 d-flex flex-wrap justify-content-around">
               {filteredBooks.map((book) => (
@@ -54,7 +52,7 @@ class BookList extends Component {
                 />
               ))}
             </Col>
-            <Col className="col-3 bg-light">
+            <Col className="col-3 bg-light bg-dark">
               <CommentArea asin={this.state.asin} />
             </Col>
           </Row>

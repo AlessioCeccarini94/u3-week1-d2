@@ -4,7 +4,7 @@ import SingleComment from "./SingleComment"
 const CommentList = ({ comments, deleteComment }) => {
   return (
     <Dropdown className="text-center mb-2">
-      <Dropdown.Toggle variant="success" id="dropdown-basic">
+      <Dropdown.Toggle className="bg-dark border-success" id="dropdown-basic">
         Vedi i Commenti
       </Dropdown.Toggle>
       <Dropdown.Menu>

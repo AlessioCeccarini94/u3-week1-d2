@@ -65,6 +65,7 @@ class AddComment extends Component {
           >
             <Form.Group className="mb-3">
               <Form.Control
+                className="bg-dark border-success text-white"
                 value={this.state.comment.comment}
                 onChange={(e) =>
                   this.setState({
@@ -74,7 +75,9 @@ class AddComment extends Component {
               />
             </Form.Group>
             <Form.Group className="mb-3">
+              s
               <Form.Select
+                className="bg-dark border-success text-white"
                 value={this.state.comment.rate}
                 onChange={(e) =>
                   this.setState({
@@ -89,7 +92,9 @@ class AddComment extends Component {
                 <option value="5">5</option>
               </Form.Select>
             </Form.Group>
-            <Button type="submit">Invia un commento</Button>
+            <Button type="submit" className="bg-dark border-success">
+              Invia un commento
+            </Button>
           </Form>
         </div>
       </>
