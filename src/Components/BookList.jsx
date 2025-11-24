@@ -14,7 +14,7 @@ class BookList extends Component {
     this.setState({
       commentArea: !this.state.commentArea,
       selected: !this.state.selected,
-      asin: state,
+      bookSelected: state,
     })
   }
   render() {
@@ -48,12 +48,12 @@ class BookList extends Component {
                   title={book.title}
                   price={book.price}
                   asin={book.asin}
-                  selected={this.state.asin === book.asin}
+                  selected={this.state.bookSelected === book.asin}
                 />
               ))}
             </Col>
             <Col className="col-3 bg-light bg-dark">
-              <CommentArea asin={this.state.asin} />
+              <CommentArea asin={this.state.bookSelected} />
             </Col>
           </Row>
         </Container>
