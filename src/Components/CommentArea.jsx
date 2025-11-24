@@ -64,7 +64,7 @@ class CommentArea extends Component {
   render() {
     return (
       <>
-        <div className="d-flex flex-column align-items-center my-3">
+        <div className="d-flex flex-column align-items-center my-3 position-sticky top-0">
           <CommentList
             comments={this.state.comments}
             deleteComment={this.deleteComment}

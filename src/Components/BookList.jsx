@@ -55,10 +55,7 @@ class BookList extends Component {
               ))}
             </Col>
             <Col className="col-3 bg-light">
-              <CommentArea
-                asin={this.state.asin}
-                className="position-sticky top-0 "
-              />
+              <CommentArea asin={this.state.asin} />
             </Col>
           </Row>
         </Container>
