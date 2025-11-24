@@ -1,15 +1,19 @@
 import { Dropdown } from "react-bootstrap"
 import SingleComment from "./SingleComment"
 
-const CommentList = (props) => {
+const CommentList = ({ comments, deleteComment }) => {
   return (
     <Dropdown className="text-center mb-2">
       <Dropdown.Toggle variant="success" id="dropdown-basic">
         Vedi i Commenti
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        {props.comments.map((comment) => (
-          <SingleComment key={comment._id} comment={comment} />
+        {comments.map((comment) => (
+          <SingleComment
+            key={comment._id}
+            comment={comment}
+            deleteComment={deleteComment}
+          />
         ))}
       </Dropdown.Menu>
     </Dropdown>
